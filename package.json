@@ -1,0 +1,19 @@
+{
+  "name": "dsh-ego-lite",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness MCP client for the official Ego daemon over authenticated HTTP",
+  "type": "module",
+  "main": "src/plugin.mjs",
+  "exports": { ".": "./src/plugin.mjs", "./connection": "./src/connection.mjs" },
+  "files": ["src", "scripts", "cordis.patch.yml", "README.md", "LICENSE"],
+  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } },
+  "engines": { "node": ">=22" },
+  "scripts": { "test": "node --test", "doctor": "node scripts/doctor.mjs", "smoke:browser": "node scripts/smoke-browser.mjs" },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-mcp-client": ">=0.1.0-rc.2 || >=0.2.0-rc.2",
+    "@deepseek-ai/schemastery": ">=3.18.1"
+  },
+  "peerDependenciesMeta": { "@deepseek-ai/dsh-mcp-client": { "optional": true } },
+  "devDependencies": { "@deepseek-ai/schemastery": "3.19.0", "@modelcontextprotocol/client": "2.3.1" },
+  "license": "MIT"
+}
