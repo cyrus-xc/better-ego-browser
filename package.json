@@ -1,5 +1,5 @@
 {
-  "name": "ego-lite-for-dsh",
+  "name": "@cyrusxc5/dsh-ego-lite",
   "version": "0.2.1",
   "description": "Official-style ego-browser Skill provider for DeepSeek Harness",
   "type": "module",

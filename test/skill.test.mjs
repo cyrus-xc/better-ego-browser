@@ -28,12 +28,12 @@ test('official provider exposes a discoverable, invocable Skill with local resou
 
 test('package loads the Skill adapter without MCP or runtime dependencies', async () => {
   const pkg = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
-  assert.equal(pkg.name, 'ego-lite-for-dsh');
+  assert.equal(pkg.name, '@cyrusxc5/dsh-ego-lite');
   assert.equal(pkg.version, '0.2.1');
   assert.equal(pkg.dependencies, undefined);
   assert.equal(pkg.peerDependencies, undefined);
   assert.equal(pkg.exports['./dsh'], './dsh/src/index.js');
   const patch = await readFile(new URL('../cordis.patch.yml', import.meta.url), 'utf8');
   assert.ok(patch.startsWith('- insert:\n'));
-  assert.ok(patch.includes(`name: ${pkg.name}/dsh`));
+  assert.ok(patch.includes(`name: '${pkg.name}/dsh'`));
 });

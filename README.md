@@ -1,6 +1,6 @@
 # ego_lite_for_DSH
 
-为 DeepSeek Harness 注册 `ego-browser` Skill，使用已安装的官方 ego lite 浏览器完成网页任务。npm 包名为 [`ego-lite-for-dsh`](https://www.npmjs.com/package/ego-lite-for-dsh)。
+为 DeepSeek Harness 注册 `ego-browser` Skill，使用已安装的官方 ego lite 浏览器完成网页任务。npm 包名为 [`@cyrusxc5/dsh-ego-lite`](https://www.npmjs.com/package/@cyrusxc5/dsh-ego-lite)。
 
 采用官方 DSH Skill provider 的实现，随包提供完整 Skill 和引用资源。模型先运行 `ego-browser skill` 读取当前安装版指南，再通过 `ego-browser nodejs` 操作浏览器。
 
@@ -11,10 +11,10 @@
 从 npm 安装本插件，`desktop` 可替换为你实际使用的 profile：
 
 ```sh
-dsh plugin --profile desktop add ego-lite-for-dsh
+dsh plugin --profile desktop add @cyrusxc5/dsh-ego-lite
 ```
 
-使用 DSH 插件管理界面时，搜索或输入 npm 包名 `ego-lite-for-dsh`。安装后重载插件或启动新的 DSH 会话。
+使用 DSH 插件管理界面时，搜索或输入 npm 包名 `@cyrusxc5/dsh-ego-lite`。安装后重载插件或启动新的 DSH 会话。
 
 若提示找不到 `ego-browser`，请先完成官方浏览器安装及首次启动设置，并重新打开 DSH，让它读取更新后的 PATH。
 
@@ -39,9 +39,9 @@ Skill 支持模型自动调用和用户主动调用。浏览器 API、任务空�
 
 ## 从本项目早期本地版本升级
 
-`dsh-ego-lite` 曾是本项目的本地包名，目前 npm 上的同名包属于其他作者。本项目从 npm 发布时改名为 `ego-lite-for-dsh`。如果此前从本仓库的 `.tgz` 安装过 `dsh-ego-lite`，请先移除那个本地版本和它的手动配置条目，再按上述 npm 命令安装。
+`dsh-ego-lite` 曾是本项目的本地包名，目前 npm 上的同名包属于其他作者。本项目从 npm 发布时改名为 `@cyrusxc5/dsh-ego-lite`。如果此前从本仓库的 `.tgz` 安装过 `dsh-ego-lite`，请先移除那个本地版本和它的手动配置条目，再按上述 npm 命令安装。
 
-`0.1.0` 的 `mcpEnabled`、`browserEnabled`、`endpoint`、`tokenFile` 等选项已移除。当前 bundle 加载 `ego-lite-for-dsh/dsh`，不需要配置字段。
+`0.1.0` 的 `mcpEnabled`、`browserEnabled`、`endpoint`、`tokenFile` 等选项已移除。当前 bundle 加载 `@cyrusxc5/dsh-ego-lite/dsh`，不需要配置字段。
 
 ## 开发检查
 
