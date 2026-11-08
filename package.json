@@ -1,6 +1,6 @@
 {
-  "name": "dsh-ego-lite",
-  "version": "0.2.0",
+  "name": "ego-lite-for-dsh",
+  "version": "0.2.1",
   "description": "Official-style ego-browser Skill provider for DeepSeek Harness",
   "type": "module",
   "main": "./dsh/src/index.js",
@@ -40,5 +40,9 @@
     "type": "git",
     "url": "git+https://github.com/cyrus-xc/ego_lite_for_DSH.git"
   },
+  "homepage": "https://github.com/cyrus-xc/ego_lite_for_DSH#readme",
+  "bugs": { "url": "https://github.com/cyrus-xc/ego_lite_for_DSH/issues" },
+  "author": "cyrus-xc",
+  "publishConfig": { "access": "public", "registry": "https://registry.npmjs.org/" },
   "license": "MIT"
 }

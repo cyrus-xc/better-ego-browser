@@ -1,52 +1,54 @@
 # ego_lite_for_DSH
 
-采用官方 DSH 集成形式的 ego lite 插件，包名为 `dsh-ego-lite`。
+为 DeepSeek Harness 注册 `ego-browser` Skill，使用已安装的官方 ego lite 浏览器完成网页任务。npm 包名为 [`ego-lite-for-dsh`](https://www.npmjs.com/package/ego-lite-for-dsh)。
 
-插件通过 `ctx.skills.registerProvider()` 注册 `ego-browser` Skill。模型读取 Skill 后，先运行官方 `ego-browser skill` 获取当前安装版指南，再通过官方 `ego-browser nodejs` 操作浏览器。使用 DSH 自带的本地命令执行能力。
-
-本版本不需要 MCP daemon、HTTP 服务、token 或配对，不包含自建浏览器工具、Linux runtime 或浏览器下载器。
-
-## 来源
-
-适配器与完整 Skill 文件直接复制自 [citrolabs/ego-lite](https://github.com/citrolabs/ego-lite)，固定版本见 [UPSTREAM.json](./UPSTREAM.json)。上游文件保持原文，保留 [CitroLabs MIT 许可](./THIRD_PARTY_LICENSE.txt)。本仓库提供独立包名及打包配置，并非官方发布包。
-
-- [官方 DSH 适配器](https://github.com/citrolabs/ego-lite/blob/bacaece43900e8ca68eea3b6f1663835ea38df9e/plugins/ego/dsh/src/index.js)
-- [官方插件说明](https://github.com/citrolabs/ego-lite/blob/bacaece43900e8ca68eea3b6f1663835ea38df9e/plugins/ego/README.md#deepseek-harness)
-- 官方发布包是 `@ego-lite/dsh-plugin`；本项目保留自己的包名以区分来源。
+采用官方 DSH Skill provider 的实现，随包提供完整 Skill 和引用资源。模型先运行 `ego-browser skill` 读取当前安装版指南，再通过 `ego-browser nodejs` 操作浏览器。
 
 ## 安装
 
-需要 DSH >=0.2.0、Node.js >=22、已安装的官方 ego lite。`ego-browser` 应能从 DSH 的命令环境执行。
+需要 **DeepSeek Harness >=0.2.0**、**Node.js >=22**，并提前安装[官方 ego lite](https://lite.ego.app/)。确认 `ego-browser` 能从 DSH 的命令环境运行。
 
-在项目目录运行 `npm pack`，生成 `dsh-ego-lite-0.2.0.tgz`。使用 DSH 插件安装界面导入，或按官方方式执行（替换为实际 profile）：
+从 npm 安装本插件，`desktop` 可替换为你实际使用的 profile：
 
-```powershell
-dsh plugin --profile desktop add C:/Users/Cyrus/Desktop/ego_lite_for_DSH/dsh-ego-lite-0.2.0.tgz
+```sh
+dsh plugin --profile desktop add ego-lite-for-dsh
 ```
 
-也可以直接安装官方发行包：
+使用 DSH 插件管理界面时，搜索或输入 npm 包名 `ego-lite-for-dsh`。安装后重载插件或启动新的 DSH 会话。
 
-```powershell
-dsh plugin --profile desktop add @ego-lite/dsh-plugin
-```
-
-选择其中一个即可，重复安装会提供相同的 Skill。
-
-本包 bundle patch 加载 `dsh-ego-lite/dsh`。手动配置只需要：
-
-```yaml
-- id: ego-lite-official
-  name: dsh-ego-lite/dsh
-```
-
-`0.1.0` 的 `mcpEnabled`、`browserEnabled`、`endpoint`、`tokenFile` 等配置在 `0.2.0` 中已移除。升级时删除这些配置并重载插件。历史提交中的自建 MCP 实现不属于当前版本。
+若提示找不到 `ego-browser`，请先完成官方浏览器安装及首次启动设置，并重新打开 DSH，让它读取更新后的 PATH。
 
 ## 使用
 
-在 DSH 请求使用 `ego-browser` Skill，并说明浏览器任务。Skill 可由模型调用，也可由用户调用；浏览器规则、任务空间管理和清理以官方 CLI 输出的当前指南为准。
+在 DSH 中发送：
 
-## 本地检查
+> 使用 ego-browser Skill 打开 example.com，读取页面标题。
 
-`npm test` 只运行脱离 DSH 的 Node 检查，核对 Skill provider 的发现/读取契约和资源文件可达性。项目无 npm 依赖。`npm pack --dry-run` 用于检查发布内容。
+Skill 支持模型自动调用和用户主动调用。浏览器 API、任务空间和清理方式以官方 CLI 输出的当前指南为准。本插件通过 DSH 的本地命令执行能力调用官方 CLI，无需额外启动 daemon、配置 HTTP 地址或提供 token。
 
-按用户要求，本次不启动 DSH、不在 DSH 内验证，也不执行浏览器任务。所有项目文件和安装包保存于 C 盘。
+## 来源与边界
+
+这是独立维护的 npm 包，**不是 CitroLabs 官方发布包**。官方发布包名为 `@ego-lite/dsh-plugin`，与本包提供相同的上游 Skill 集成；请选择其中一个安装，避免重复注册。
+
+适配器与完整 Skill 文件来自 [citrolabs/ego-lite](https://github.com/citrolabs/ego-lite)，固定版本见 [UPSTREAM.json](https://github.com/cyrus-xc/ego_lite_for_DSH/blob/main/UPSTREAM.json)。上游文件保留原文和 [CitroLabs MIT 许可](https://github.com/cyrus-xc/ego_lite_for_DSH/blob/main/THIRD_PARTY_LICENSE.txt)。本项目维护自己的包名、安装清单和发布说明。
+
+- [官方 DSH 适配器源码](https://github.com/citrolabs/ego-lite/blob/bacaece43900e8ca68eea3b6f1663835ea38df9e/plugins/ego/dsh/src/index.js)
+- [官方 DSH 安装说明](https://github.com/citrolabs/ego-lite/blob/bacaece43900e8ca68eea3b6f1663835ea38df9e/plugins/ego/README.md#deepseek-harness)
+
+本插件注册 Skill，不提供独立的 MCP 浏览器工具，也不附带 Chromium、Linux runtime、浏览器下载器或登录数据迁移功能。官方浏览器由用户单独安装并维护。
+
+## 从本项目早期本地版本升级
+
+`dsh-ego-lite` 曾是本项目的本地包名，目前 npm 上的同名包属于其他作者。本项目从 npm 发布时改名为 `ego-lite-for-dsh`。如果此前从本仓库的 `.tgz` 安装过 `dsh-ego-lite`，请先移除那个本地版本和它的手动配置条目，再按上述 npm 命令安装。
+
+`0.1.0` 的 `mcpEnabled`、`browserEnabled`、`endpoint`、`tokenFile` 等选项已移除。当前 bundle 加载 `ego-lite-for-dsh/dsh`，不需要配置字段。
+
+## 开发检查
+
+```sh
+npm ci
+npm test
+npm pack --dry-run
+```
+
+项目没有 npm 依赖和安装脚本。测试在独立 Node 环境检查 Skill provider 的发现、读取和资源可达性，不启动 DSH。发布物包含适配器、完整 Skill、安装清单和许可证。

@@ -1,2 +1,3 @@
-- id: ego-lite-official
-  name: dsh-ego-lite/dsh
+- insert:
+    - id: ego-lite-official
+      name: ego-lite-for-dsh/dsh
