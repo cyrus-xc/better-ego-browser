@@ -1,0 +1,4 @@
+* text=auto eol=lf
+dsh/** -text
+skills/** -text
+THIRD_PARTY_LICENSE.txt -text

@@ -1,0 +1,11 @@
+{
+  "repository": "https://github.com/citrolabs/ego-lite",
+  "revision": "bacaece43900e8ca68eea3b6f1663835ea38df9e",
+  "adapterSource": "plugins/ego/dsh/src/index.js",
+  "adapterDestination": "dsh/src/index.js",
+  "skillSource": "skills/ego-browser",
+  "skillDestination": "skills/ego-browser",
+  "licenseSource": "plugins/ego/LICENSE",
+  "licenseDestination": "THIRD_PARTY_LICENSE.txt",
+  "modifications": "None to upstream adapter or Skill files. Local package name, metadata, bundle entry and documentation."
+}
