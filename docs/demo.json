@@ -1,0 +1,27 @@
+{
+  "capturedOn": "2026-11-10",
+  "platform": "Windows",
+  "dshVersion": "0.2.2-rc.1",
+  "pluginVersionAtCapture": "0.3.3",
+  "repository": "https://github.com/cyrus-xc/better-ego-browser",
+  "browser": "Installed official ego lite Windows desktop app",
+  "transport": "authenticated-loopback-http",
+  "repositoryScreenshot": {
+    "file": "images/dsh-ego-lite-windows-github.png",
+    "source": "DSH ego_loopback_browser screenshot action",
+    "spaceId": 9,
+    "actions": ["health", "create", "navigate", "screenshot", "finish"],
+    "approvalRequests": 0,
+    "sha256": "4742c8a08b8d508c89929fad4dcb47a26e363985c28b02a4d582e4f5163089f5"
+  },
+  "spacesScreenshot": {
+    "file": "images/ego-lite-windows-spaces.png",
+    "source": "Original Windows ego lite Spaces screenshot supplied by the user",
+    "sha256": "896f2f7661419e0529feade06d86381c8f3118384b2878ebe452f4cd548d6c50"
+  },
+  "comparisonRevisions": {
+    "Fisfzy/dsh-ego-browser": "feb87d60d8fc16349a0373de5209b6f35032b741",
+    "Da1dr1em/dsh-ego-browser": "25ab028307072e2745fbab3764b234aa893a71c5",
+    "citrolabs/ego-lite": "bacaece43900e8ca68eea3b6f1663835ea38df9e"
+  }
+}

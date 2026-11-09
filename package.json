@@ -1,19 +1,22 @@
 {
-  "name": "@cyrusxc5/dsh-ego-lite",
-  "version": "0.2.1",
-  "description": "Official-style ego-browser Skill provider for DeepSeek Harness",
+  "name": "@cyrusxc5/better-ego-browser",
+  "version": "0.3.3",
+  "description": "better-ego-browser: connect DeepSeek Harness to the official Windows ego lite app over authenticated loopback HTTP",
   "type": "module",
-  "main": "./dsh/src/index.js",
+  "main": "./dsh/plugin.mjs",
   "exports": {
-    ".": "./dsh/src/index.js",
-    "./dsh": "./dsh/src/index.js",
+    ".": "./dsh/plugin.mjs",
+    "./dsh": "./dsh/plugin.mjs",
     "./package.json": "./package.json"
   },
   "files": [
     "dsh",
     "skills",
+    "docs/images",
+    "docs/demo.json",
     "cordis.patch.yml",
     "README.md",
+    "README.en.md",
     "LICENSE",
     "THIRD_PARTY_LICENSE.txt",
     "UPSTREAM.json"
@@ -32,17 +35,31 @@
   },
   "keywords": [
     "dsh-plugin",
+    "better-ego-browser",
     "ego-browser",
     "skill",
     "browser"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cyrus-xc/ego_lite_for_DSH.git"
+    "url": "git+https://github.com/cyrus-xc/better-ego-browser.git"
   },
-  "homepage": "https://github.com/cyrus-xc/ego_lite_for_DSH#readme",
-  "bugs": { "url": "https://github.com/cyrus-xc/ego_lite_for_DSH/issues" },
+  "homepage": "https://github.com/cyrus-xc/better-ego-browser#readme",
+  "bugs": {
+    "url": "https://github.com/cyrus-xc/better-ego-browser/issues"
+  },
   "author": "cyrus-xc",
-  "publishConfig": { "access": "public", "registry": "https://registry.npmjs.org/" },
-  "license": "MIT"
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "@deepseek-ai/dsh-mcp-client": ">=0.2.0-rc.2 || >=0.2.1-0 || >=0.2.2-0"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-mcp-client": {
+      "optional": true
+    }
+  }
 }

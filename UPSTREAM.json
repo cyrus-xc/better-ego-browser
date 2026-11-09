@@ -1,11 +1,9 @@
 {
   "repository": "https://github.com/citrolabs/ego-lite",
   "revision": "bacaece43900e8ca68eea3b6f1663835ea38df9e",
-  "adapterSource": "plugins/ego/dsh/src/index.js",
-  "adapterDestination": "dsh/src/index.js",
-  "skillSource": "skills/ego-browser",
-  "skillDestination": "skills/ego-browser",
+  "skillResourcesSource": "skills/ego-browser",
+  "skillResourcesDestination": "skills/ego-browser",
   "licenseSource": "plugins/ego/LICENSE",
   "licenseDestination": "THIRD_PARTY_LICENSE.txt",
-  "modifications": "None to upstream adapter or Skill files. Local package name, metadata, bundle entry and documentation."
+  "modifications": "0.3.3 replaces the former native-CLI Skill entry with a project-maintained loopback transport. Upstream skill resources, agent metadata and icons retain their upstream content. The official browser CLI and SDK are invoked, not redistributed."
 }

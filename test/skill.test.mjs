@@ -1,39 +1,30 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFile, access } from 'node:fs/promises';
-import path from 'node:path';
-import * as plugin from '../dsh/src/index.js';
+import {readFile} from 'node:fs/promises';
+import {createSkillProvider} from '../dsh/skill-provider.mjs';
 
-test('official provider exposes a discoverable, invocable Skill with local resources', async () => {
-  let provider;
-  plugin.apply({ skills: { registerProvider(factory) { provider = factory(); } } });
-  assert.deepEqual(plugin.inject, ['skills']);
-  assert.equal(plugin.name, 'ego');
-  const candidates = await provider.list();
-  assert.equal(candidates.length, 1);
-  const candidate = candidates[0];
-  assert.equal(candidate.name, 'ego-browser');
-  assert.equal(candidate.invocation.modelInvocable, true);
-  assert.equal(candidate.invocation.userInvocable, true);
-  const skill = await provider.get(candidate);
-  assert.match(skill.content, /ego-browser skill/);
-  assert.equal(skill.resourceBase.kind, 'directory');
-  assert.equal(skill.path, candidate.locator);
-  for (const file of ['SKILL.md', 'references/install.md', 'references/install-windows.md', 'references/install-macos.md', 'references/clearing-state.md', 'assets/logo.png']) {
-    await access(path.join(skill.resourceBase.path, file));
-  }
-  assert.equal(await provider.get({ ...candidate, locator: '/unrelated/SKILL.md' }), undefined);
-  assert.equal(await provider.get({ ...candidate, name: 'unrelated' }), undefined);
+test('/ego-browser resolves to loopback-only instructions with no CLI fallback',async()=>{
+  const provider=createSkillProvider();
+  const [candidate]=await provider.list();
+  const skill=await provider.get(candidate);
+  assert.equal(skill.name,'ego-browser');
+  assert.equal(skill.provider,'ego');
+  assert.equal(skill.invocation.modelInvocable,true);
+  assert.equal(skill.invocation.userInvocable,true);
+  assert.equal(candidate.rank,600);
+  assert.match(skill.content,/ROUTE: EGO_LOOPBACK_ONLY/);
+  assert.match(skill.content,/ego_loopback_browser/);
+  assert.match(skill.content,/report the exact error and stop/);
+  assert.doesNotMatch(skill.content,/ego-browser nodejs|ego-browser skill/);
+  assert.equal(await provider.get({...candidate,locator:'/unrelated'}),undefined);
 });
-
-test('package loads the Skill adapter without MCP or runtime dependencies', async () => {
-  const pkg = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
-  assert.equal(pkg.name, '@cyrusxc5/dsh-ego-lite');
-  assert.equal(pkg.version, '0.2.1');
-  assert.equal(pkg.dependencies, undefined);
-  assert.equal(pkg.peerDependencies, undefined);
-  assert.equal(pkg.exports['./dsh'], './dsh/src/index.js');
-  const patch = await readFile(new URL('../cordis.patch.yml', import.meta.url), 'utf8');
-  assert.ok(patch.startsWith('- insert:\n'));
-  assert.ok(patch.includes(`name: '${pkg.name}/dsh'`));
+test('main package exclusively exports the new loopback plugin',async()=>{
+  const pkg=JSON.parse(await readFile(new URL('../package.json',import.meta.url),'utf8'));
+  assert.equal(pkg.name,'@cyrusxc5/better-ego-browser');
+  assert.equal(pkg.version,'0.3.3');
+  assert.equal(pkg.exports['./dsh'],'./dsh/plugin.mjs');
+  const plugin=await readFile(new URL('../dsh/plugin.mjs',import.meta.url),'utf8');
+  assert.match(plugin,/createSkillProvider/);
+  assert.match(plugin,/registerProvider/);
+  assert.match(plugin,/\['tools', 'skills'\]/);
 });
