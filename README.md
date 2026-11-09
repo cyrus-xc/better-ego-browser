@@ -39,7 +39,7 @@
 ```bash
 git clone https://github.com/cyrus-xc/better-ego-browser.git
 cd better-ego-browser
-dsh plugin --profile desktop add "$(pwd)"
+dsh plugin --profile desktop add "file:$(node -p 'process.cwd()')"
 ```
 
 CLI 安装后，确认该 profile 的 `package.json` 中，`dsh.profile.bundles` 列表包含 `@cyrusxc5/better-ego-browser`，并保留其他插件条目。`desktop` 可替换为你使用的 profile 名。
