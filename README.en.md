@@ -48,7 +48,7 @@ Restart DSH and start a new conversation to use `/ego-browser`.
 
 ### Install from npm
 
-📦 The npm package is not available yet. Once published, add and enable **`@cyrusxc5/better-ego-browser`** in DSH's plugin manager, or run:
+📦 Add and enable **`@cyrusxc5/better-ego-browser`** in DSH's plugin manager, or run:
 
 ```bash
 dsh plugin --profile desktop add @cyrusxc5/better-ego-browser

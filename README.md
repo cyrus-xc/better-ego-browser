@@ -48,7 +48,7 @@ CLI 安装后，确认该 profile 的 `package.json` 中，`dsh.profile.bundles`
 
 ### 通过 npm 安装
 
-📦 npm 包暂未上架。上架后，可在 DSH 插件管理界面输入 **`@cyrusxc5/better-ego-browser`** 添加并启用，也可以使用：
+📦 在 DSH 插件管理界面输入 **`@cyrusxc5/better-ego-browser`** 添加并启用，也可以使用：
 
 ```bash
 dsh plugin --profile desktop add @cyrusxc5/better-ego-browser
