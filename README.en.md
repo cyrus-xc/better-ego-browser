@@ -36,11 +36,10 @@ Install [official ego lite for Windows](https://lite.ego.app/), complete its ini
 
 ### Install from source
 
-Open PowerShell in the repository root:
-
-```powershell
-$packageFile = npm pack --silent
-dsh plugin --profile desktop add "./$packageFile"
+```bash
+git clone https://github.com/cyrus-xc/better-ego-browser.git
+cd better-ego-browser
+dsh plugin --profile desktop add "$(pwd)"
 ```
 
 After installing through the CLI, make sure the profile's `package.json` includes `@cyrusxc5/better-ego-browser` in `dsh.profile.bundles`, alongside your other plugins. Replace `desktop` with your profile name if needed.
@@ -51,7 +50,7 @@ Restart DSH and start a new conversation to use `/ego-browser`.
 
 📦 The npm package is not available yet. Once published, add and enable **`@cyrusxc5/better-ego-browser`** in DSH's plugin manager, or run:
 
-```powershell
+```bash
 dsh plugin --profile desktop add @cyrusxc5/better-ego-browser
 ```
 

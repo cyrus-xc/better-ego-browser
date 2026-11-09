@@ -36,11 +36,10 @@
 
 ### 从源码安装
 
-在仓库根目录打开 PowerShell：
-
-```powershell
-$packageFile = npm pack --silent
-dsh plugin --profile desktop add "./$packageFile"
+```bash
+git clone https://github.com/cyrus-xc/better-ego-browser.git
+cd better-ego-browser
+dsh plugin --profile desktop add "$(pwd)"
 ```
 
 CLI 安装后，确认该 profile 的 `package.json` 中，`dsh.profile.bundles` 列表包含 `@cyrusxc5/better-ego-browser`，并保留其他插件条目。`desktop` 可替换为你使用的 profile 名。
@@ -51,7 +50,7 @@ CLI 安装后，确认该 profile 的 `package.json` 中，`dsh.profile.bundles`
 
 📦 npm 包暂未上架。上架后，可在 DSH 插件管理界面输入 **`@cyrusxc5/better-ego-browser`** 添加并启用，也可以使用：
 
-```powershell
+```bash
 dsh plugin --profile desktop add @cyrusxc5/better-ego-browser
 ```
 
