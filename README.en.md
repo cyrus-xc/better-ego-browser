@@ -32,7 +32,7 @@ The image shows the Spaces overview in official ego lite for Windows. Repository
 
 ## Installation
 
-Install [official ego lite for Windows](https://lite.ego.app/), complete its initial setup, and sign into the websites you need in the appropriate profile. DSH needs an available Windows desktop environment and Node.js 22 or later.
+Install [official ego lite for Windows](https://lite.ego.app/), complete its initial setup, and sign into the websites you need in the appropriate profile. Requires DSH `0.2.0-rc.1` or later, Node.js 22 or later, and an available Windows desktop environment.
 
 ### Install from source
 

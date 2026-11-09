@@ -28,7 +28,7 @@
   },
   "engines": {
     "node": ">=22",
-    "dsh": ">=0.2.0"
+    "dsh": ">=0.2.0-rc.1"
   },
   "scripts": {
     "test": "node --test --test-isolation=none"
@@ -55,7 +55,7 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "@deepseek-ai/dsh-mcp-client": ">=0.2.0-rc.2 || >=0.2.1-0 || >=0.2.2-0"
+    "@deepseek-ai/dsh-mcp-client": ">=0.2.0-rc.1 || >=0.2.1-0 || >=0.2.2-0"
   },
   "peerDependenciesMeta": {
     "@deepseek-ai/dsh-mcp-client": {

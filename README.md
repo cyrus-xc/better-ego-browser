@@ -32,7 +32,7 @@
 
 ## 安装
 
-先安装 [官方 Windows ego lite](https://lite.ego.app/)，完成首次启动，并在需要使用的 profile 中登录网站。DSH 需要可用的 Windows 桌面环境，Node.js 需为 22 或更新版本。
+先安装 [官方 Windows ego lite](https://lite.ego.app/)，完成首次启动，并在需要使用的 profile 中登录网站。需要 DSH `0.2.0-rc.1` 或更新版本、Node.js 22 或更新版本，以及可用的 Windows 桌面环境。
 
 ### 从源码安装
 
