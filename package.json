@@ -1,6 +1,6 @@
 {
   "name": "@cyrusxc5/better-ego-browser",
-  "version": "0.3.3",
+  "version": "0.3.6",
   "description": "better-ego-browser: connect DeepSeek Harness to the official Windows ego lite app over authenticated loopback HTTP",
   "type": "module",
   "main": "./dsh/plugin.mjs",
